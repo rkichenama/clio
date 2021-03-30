@@ -1,0 +1,53 @@
+{
+  "name": "clio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve --config ./webpack.config.js  --mode development --progress --profile",
+    "test:lint": "tsc --noEmit",
+    "test:jest": "jest -c jest.config.js --coverage",
+    "test": "run-s -l test:lint test:jest",
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production --output-path docs",
+    "prebuild": "npm test",
+    "build": "npm run build:prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkichenama/clio.git"
+  },
+  "author": "Richard Kichenama <rkichenama@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rkichenama/clio/issues"
+  },
+  "homepage": "https://github.com/rkichenama/clio#readme",
+  "dependencies": {
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.0",
+    "axios": "^0.21.1",
+    "css-loader": "^5.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.1",
+    "html-webpack-plugin": "^5.3.1",
+    "humps": "^2.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.3",
+    "jest-ts-auto-mock": "^2.0.0",
+    "mini-css-extract-plugin": "^1.4.0",
+    "npm-run-all": "^4.1.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-select": "^4.3.0",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
+    "ts-auto-mock": "^3.1.2",
+    "ts-jest": "^26.5.4",
+    "ts-loader": "^8.1.0",
+    "ttypescript": "^1.5.12",
+    "typescript": "^4.2.3",
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

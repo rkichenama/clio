@@ -1,0 +1,15 @@
+.controls-sidebar {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-auto-rows: max-content;
+  align-items: center;
+  gap: 4px;
+
+  > fieldset {
+    grid-column: 1 / -1;
+  }
+
+  input {
+    width: 100%;
+  }
+}

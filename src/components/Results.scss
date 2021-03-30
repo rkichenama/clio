@@ -1,0 +1,45 @@
+.results {
+  overflow-y: auto;
+  counter-reset: result;
+
+  .result {
+    counter-increment: result;
+    margin-left: 2em;
+
+
+    &:nth-of-type(even) {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    > div {
+      position: relative;
+      &:nth-child(1) {
+        font-weight: bold;
+
+        &::before {
+          content: counter(result) ".";
+          position: absolute;
+          display: inline-block;
+          left: -2em;
+        }
+      }
+    }
+
+    > section {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+
+      > button {
+        height: 48px;
+      }
+    }
+
+    .close,
+    .open {
+      padding: 0 3em;
+    }
+    .close {
+      padding-right: 0;
+    }
+  }
+}
