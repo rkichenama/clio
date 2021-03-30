@@ -1,6 +1,6 @@
 # clio
 
->  ...an application that can allow a user to find jobs. This will leverage [https://www.themuse.com/developers](themuse public-facing API).
+>  ...an application that can allow a user to find jobs. This will leverage [themuse public-facing API](https://www.themuse.com/developers).
 
 Bare minimum implementation of a search page, allowing the functional search based on the filtered controls with a text search applied as an additional filter on the results.
 
