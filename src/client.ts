@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { AxiosResponse } from 'axios';
 import Axios from './axios';
 
@@ -36,10 +37,19 @@ const axios = () => {
     } });
   }
 }
-export default (params: Query) => axios()(
-{
-  method: 'GET',
-  url: 'jobs',
-  params
-})
+export default (params: Query) => {
+  const paramsToQuery = Object.entries(params)
+    .reduce((qry, [ key, values ]) => {
+      if (Array.isArray(values) && values.length) {
+        qry += `&${values.map(value => `${key}=${value}`).join('&')}`;
+      } else if (key === 'page') {
+        qry += `&page=${values}`
+      }
+      return qry;
+    }, '');
+  return axios()({
+    method: 'GET',
+    url: `jobs?${paramsToQuery.slice(1)}`
+  });
+}
 // .then(pullLimitsFromHeaders);

@@ -4,8 +4,8 @@ import firstNChars from '../shared/domparse';
 
 import './Results.scss';
 
-type ResultType = Pick<Job, 'company' | 'name' | 'locations' | 'contents'>;
-const Result: React.FC<ResultType> = ({
+type ResultType = Pick<Job, 'company' | 'name' | 'locations' | 'contents' | 'refs'>;
+export const Result: React.FC<ResultType> = ({
   company, contents, locations, name, refs: { landingPage }
 }) => {
   const [ expanded, toggleExpanded ] = React.useState(false);
@@ -40,9 +40,11 @@ const Results: React.FC<any> = () => {
           ? ('Loading...')
           : !loading && !loaded
             ? ('please try doing a search')
-            : data.map(job => (
-              <Result key={job.id} {...job} />
-            ))
+            : data.length
+              ? data.map(job => (
+                <Result key={job.id} {...job} />
+              ))
+              : ('that combination has no results')
       }
     </section>
   );

@@ -36,7 +36,7 @@ interface Job {
   levels: Level[],
   locations: Location[],
   name: string,
-  publicationDate: sring,
+  publicationDate: string,
   refs: Ref,
   shortName: string,
   tags: [],

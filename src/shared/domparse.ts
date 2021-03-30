@@ -1,4 +1,4 @@
-
+/* istanbul ignore file */
 const domParser = new DOMParser();
 
 export default function firstNChars (html: string, n: number = 100) {

@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Result should render 1`] = `
+<article
+  className="result"
+>
+  <div>
+    <a
+      href=""
+      rel="noopener"
+      target="_blank"
+    />
+  </div>
+  <div />
+  <div
+    className="flexible-container"
+  />
+  <section>
+    <button
+      onClick={[Function]}
+    >
+      more
+    </button>
+    <div
+      className="closed"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": undefined,
+        }
+      }
+    />
+  </section>
+</article>
+`;
+
+exports[`Results should render 1`] = `
+<section
+  className="results"
+>
+  <Result
+    categories={Array []}
+    company={
+      Object {
+        "id": 0,
+        "name": "",
+        "shortName": "",
+      }
+    }
+    contents=""
+    id={0}
+    key="0"
+    levels={Array []}
+    locations={Array []}
+    name=""
+    publicationDate=""
+    refs={
+      Object {
+        "landingPage": "",
+      }
+    }
+    shortName=""
+    tags={Array []}
+    type="internal"
+  />
+</section>
+`;

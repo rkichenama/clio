@@ -7,7 +7,8 @@ type SearchContextValue = {
   loading: boolean,
   loaded: boolean,
   error?: any,
-  data: Job[]
+  data: Job[],
+  performJobSearch: Function
 }
 type Action = {
   type: string,
@@ -27,7 +28,7 @@ const Mutations = {
     loading: false,
     loaded: true,
     error: false,
-    data: (action.payload as ApiSuccess).results
+    data: (action.payload as ApiSuccess)
   }),
   jobSearchFail: (state: SearchContextValue, action: Action) => ({
     ...state,
@@ -713,14 +714,23 @@ export const SearchContext = React.createContext({} as SearchContextValue);
 
 const SearchProvider: React.FC<any> = ({ children }) => {
   const [ value, dispatch ] = React.useReducer(reducer, {}, initializer);
-  const performJobSearch = React.useCallback((query: Query) => {
+  const performJobSearch = React.useCallback((query: Query, title?: string) => {
     dispatch({ type: SearchActions.JobSearchStart });
     client({
       ...query,
       page: 1
     }).then(
       ({ data }) => {
-        dispatch({ type: SearchActions.JobSearchSuccess, payload: data });
+        if (title) {
+          const regex = new RegExp(title, 'i');
+          debugger
+          dispatch({
+            type: SearchActions.JobSearchSuccess,
+            payload: data.results.filter(({ name }) => regex.test(name))
+          });
+        } else {
+          dispatch({ type: SearchActions.JobSearchSuccess, payload: data.results });
+        }
       },
       (err) => {
         dispatch({ type: SearchActions.JobSearchFail, payload: err })

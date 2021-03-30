@@ -14,7 +14,6 @@ export default (baseURL: string, {
   const api = Axios.create({ baseURL, headers });
 
   api.interceptors.response.use((response: AxiosResponse) => {
-console.log(response)
     if (response.data && /^application\/json/.test(response.headers['content-type'])) {
       response.data = transform(camelizeKeys(response.data));
     }

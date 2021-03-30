@@ -7,26 +7,23 @@ import { Categories, Companies, Levels, Locations } from '../shared/Options';
 import './Controls.scss';
 
 type SelectOption = { label: string, value: string };
-type ControlState = Record<'company' | 'category' | 'level' | 'location' | 'title', { label: string, value: string }[]>;
+interface ControlState extends Record<'company' | 'category' | 'level' | 'location', { label: string, value: string }[]> {
+  title: string
+};
 
 const asOptions = (list: string[]) => list.map(label => ({ label, value: label } as SelectOption));
 const asValues = (list: SelectOption[] = []) => list.map(({ value }) => value);
 
 const SelectFor = (list: string[], value: SelectOption[], onChange) => (
   <Select {...{
-    // className: 'reactSelect-container',
-    // classNamePrefix: 'reactSelect',
     menuPlacement: 'auto',
-    // id: 'flairs',
     value,
     isSearchable: true,
     isClearable: true,
     hideSelectedOptions: true,
     isMulti: true,
     options: asOptions(list),
-    onChange,
-    // inputValue,
-    // onInputChange,
+    onChange
   }} />
 );
 
@@ -51,7 +48,7 @@ const Test: React.FC<any> = () => {
       category: asValues(category),
       level: asValues(level),
       location: asValues(location)
-    });
+    }, title);
   }, [ company, category, level, location, title ]);
   const companySelect = React.useMemo(() => (
     SelectFor(Companies, company || [], updateKey('company'))

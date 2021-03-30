@@ -5,9 +5,9 @@ import Search from './Search';
 
 import './global.scss';
 
-((w, d) => {
+((d) => {
   const main = d.createElement('themuse');
   main.setAttribute('style', 'display: contents');
   d.body.appendChild(main);
   render(<Search />, main);
-})(window, document);
+})(document);
