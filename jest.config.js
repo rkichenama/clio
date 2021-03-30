@@ -13,6 +13,7 @@ module.exports = {
   "collectCoverageFrom": [
     "./src/**/*.{ts,tsx}",
     "!./src/**/*.d.ts",
+    "!./src/shared**/*",
     "!**/node_modules/**"
   ],
   setupFiles: [ '<rootDir>config.ts' ],

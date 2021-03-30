@@ -6,11 +6,17 @@ const pkg = require('./package.json');
 const sass = require('sass');
 
 module.exports = {
-  devServer: {
-    contentBase: join(__dirname, 'dist'),
-    compress: true,
-    port: 9000
-  },
+  ...(
+    process.env.NODE_ENV !== 'production'
+      ? {
+        devServer: {
+          contentBase: join(__dirname, 'dist'),
+          compress: true,
+          port: 9000
+        }
+      }
+      : {}
+  ),
   entry: {
     clio: resolve(__dirname, 'src/index.tsx'),
   },
